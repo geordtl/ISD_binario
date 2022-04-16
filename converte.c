@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int main (void){
     int n1c, n2c, n1q, n2q, contaDigitos1 = 0, contaDigitos2 = 0;
