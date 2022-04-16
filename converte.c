@@ -6,6 +6,7 @@ int main (void){
     int n1c, n2c, n1q, n2q, contaDigitos1 = 0, contaDigitos2 = 0;
     char n1[9], n2[9], soma[9], tempSoma, operacao;
     /* acrescimos de 0 para n1 */
+    char z0[9] = {'\0'};
     char z1[9] = {'0','\0'};
     char z2[9] = {'0','0','\0'};
     char z3[9] = {'0','0','0','\0'};
@@ -14,6 +15,7 @@ int main (void){
     char z6[9] = {'0','0','0','0','0','0','\0'};
     char z7[9] = {'0','0','0','0','0','0','0','\0'};
     /* acrescimos de 0 para n2 */
+    char zr0[9] = {'\0'};
     char zr1[9] = {'0','\0'};
     char zr2[9] = {'0','0','\0'};
     char zr3[9] = {'0','0','0','\0'};
@@ -76,6 +78,10 @@ int main (void){
                 strcat(z1, n1);
                 strcpy(n1, z1);
             break;
+            case 8:
+                strcat(z0, n1);
+                strcpy(n1, z0);
+            break;
         }
 
         /* conta os dígitos de n2 e implementa a estrutura de decisão */
@@ -119,6 +125,10 @@ int main (void){
                 strcat(zr1, n2);
                 strcpy(n2, zr1);
             break;
+            case 8:
+                strcat(zr0, n2);
+                strcpy(n2, zr0);
+            break;
         }
 
         /* verifica se a operação é de soma (+) */
@@ -128,232 +138,273 @@ int main (void){
             {
                 soma[7] = '0';
                 tempSoma = '0';
-            }
-            if(n1[7] == '1' && n2[7] == '0' || n1[7] == '0' && n2[7] == '1')
-            {
-                soma[7] = '1';
-                tempSoma = '0';
-            }
-            if(n1[7] == '1' && n2[7] == '1'){
-                soma[7] = '0';
-                tempSoma = '1';
+            }else {
+                if(n1[7] == '1' && n2[7] == '0' || n1[7] == '0' && n2[7] == '1')
+                {
+                    soma[7] = '1';
+                    tempSoma = '0';
+                }
+                else {
+                    if(n1[7] == '1' && n2[7] == '1'){
+                        soma[7] = '0';
+                        tempSoma = '1';
+                    }
+                }
             }
 
             /* SEGUNDO DÍGITO */
             if(n1[6] == '0' && n2[6] == '0' && tempSoma == '0')
             {
                 soma[6] = '0';
-            }
-            if(n1[6] == '0' && n2[6] == '0' && tempSoma == '1')
-            {
-                soma[6] = '1';
-                tempSoma = '0';
-            }
-            if((n1[6] == '1' && n2[6] == '0' || n1[6] == '0' && n2[6] == '1')&& tempSoma == '1')
-            {
-                soma[6] = '0';
-                tempSoma = '1';
-            }
-            if((n1[6] == '1' && n2[6] == '0' || n1[6] == '0' && n2[6] == '1')&& tempSoma == '0')
-            {
-                soma[6] = '1';
-                tempSoma = '0';
-            }
-            if(n1[6] == '1' && n2[6] == '1' && tempSoma == '0')
-            {
-                soma[6] = '0';
-                tempSoma = '1';
-            }
-            if(n1[6] == '1' && n2[6] == '1' && tempSoma == '1')
-            {
-                soma[6] = '1';
-                tempSoma = '1';
+            }else {
+                if(n1[6] == '0' && n2[6] == '0' && tempSoma == '1')
+                {
+                    soma[6] = '1';
+                    tempSoma = '0';
+                }else {
+                    if((n1[6] == '1' && n2[6] == '0' || n1[6] == '0' && n2[6] == '1')&& tempSoma == '1')
+                    {
+                        soma[6] = '0';
+                        tempSoma = '1';
+                    }else {
+                        if((n1[6] == '1' && n2[6] == '0' || n1[6] == '0' && n2[6] == '1')&& tempSoma == '0')
+                        {
+                            soma[6] = '1';
+                            tempSoma = '0';
+                        }
+                        else {
+                            if(n1[6] == '1' && n2[6] == '1' && tempSoma == '0')
+                            {
+                                soma[6] = '0';
+                                tempSoma = '1';
+                            } else {
+                                if(n1[6] == '1' && n2[6] == '1' && tempSoma == '1')
+                                {
+                                    soma[6] = '1';
+                                    tempSoma = '1';
+                                }
+                            }
+                        }
+                    }
+                }
             }
             
             /* TERCEIRO DÍGITO */
             if(n1[5] == '0' && n2[5] == '0' && tempSoma == '0')
             {
                 soma[5] = '0';
+            }else {
+                if(n1[5] == '0' && n2[5] == '0' && tempSoma == '1')
+                {
+                    soma[5] = '1';
+                    tempSoma = '0';
+                }else {
+                    if((n1[5] == '1' && n2[5] == '0' || n1[5] == '0' && n2[5] == '1')&& tempSoma == '1')
+                    {
+                        soma[5] = '0';
+                        tempSoma = '1';
+                    }else {
+                        if((n1[5] == '1' && n2[5] == '0' || n1[5] == '0' && n2[5] == '1')&& tempSoma == '0')
+                        {
+                            soma[5] = '1';
+                            tempSoma = '0';
+                        } else{
+                            if(n1[5] == '1' && n2[5] == '1' && tempSoma == '0')
+                            {
+                                soma[5] = '0';
+                                tempSoma = '1';
+                            } else {
+                                if(n1[5] == '1' && n2[5] == '1' && tempSoma == '1')
+                                {
+                                    soma[5] = '1';
+                                    tempSoma = '1';
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            if(n1[5] == '0' && n2[5] == '0' && tempSoma == '1')
-            {
-                soma[5] = '1';
-                tempSoma = '0';
-            }
-            if((n1[5] == '1' && n2[5] == '0' || n1[5] == '0' && n2[5] == '1')&& tempSoma == '1')
-            {
-                soma[5] = '0';
-                tempSoma = '1';
-            }
-            if((n1[5] == '1' && n2[5] == '0' || n1[5] == '0' && n2[5] == '1')&& tempSoma == '0')
-            {
-                soma[5] = '1';
-                tempSoma = '0';
-            }
-            if(n1[5] == '1' && n2[5] == '1' && tempSoma == '0')
-            {
-                soma[5] = '0';
-                tempSoma = '1';
-            }
-            if(n1[5] == '1' && n2[5] == '1' && tempSoma == '1')
-            {
-                soma[5] = '1';
-                tempSoma = '1';
-            }
+            
 
             /* QUARTO DÍGITO */
             if(n1[4] == '0' && n2[4] == '0' && tempSoma == '0')
             {
                 soma[4] = '0';
+            }else {
+                if(n1[4] == '0' && n2[4] == '0' && tempSoma == '1')
+                {
+                    soma[4] = '1';
+                    tempSoma = '0';
+                }else {
+                    if((n1[4] == '1' && n2[4] == '0' || n1[4] == '0' && n2[4] == '1')&& tempSoma == '1')
+                    {
+                        soma[4] = '0';
+                        tempSoma = '1';
+                    }else {
+                        if((n1[4] == '1' && n2[4] == '0' || n1[4] == '0' && n2[4] == '1')&& tempSoma == '0')
+                        {
+                            soma[4] = '1';
+                            tempSoma = '0';
+                        }else {
+                            if(n1[4] == '1' && n2[4] == '1' && tempSoma == '0')
+                            {
+                                soma[4] = '0';
+                                tempSoma = '1';
+                            }else {
+                                if(n1[4] == '1' && n2[4] == '1' && tempSoma == '1')
+                                {
+                                    soma[4] = '1';
+                                    tempSoma = '1';
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            if(n1[4] == '0' && n2[4] == '0' && tempSoma == '1')
-            {
-                soma[4] = '1';
-                tempSoma = '0';
-            }
-            if((n1[4] == '1' && n2[4] == '0' || n1[4] == '0' && n2[4] == '1')&& tempSoma == '1')
-            {
-                soma[4] = '0';
-                tempSoma = '1';
-            }
-            if((n1[4] == '1' && n2[4] == '0' || n1[4] == '0' && n2[4] == '1')&& tempSoma == '0')
-            {
-                soma[4] = '1';
-                tempSoma = '0';
-            }
-            if(n1[4] == '1' && n2[4] == '1' && tempSoma == '0')
-            {
-                soma[4] = '0';
-                tempSoma = '1';
-            }
-            if(n1[4] == '1' && n2[4] == '1' && tempSoma == '1')
-            {
-                soma[4] = '1';
-                tempSoma = '1';
-            }
+            
 
             /* QUINTO DÍGITO */
             if(n1[3] == '0' && n2[3] == '0' && tempSoma == '0')
             {
                 soma[3] = '0';
-            }
-            if(n1[3] == '0' && n2[3] == '0' && tempSoma == '1')
-            {
-                soma[3] = '1';
-                tempSoma = '0';
-            }
-            if((n1[3] == '1' && n2[3] == '0' || n1[3] == '0' && n2[3] == '1')&& tempSoma == '1')
-            {
-                soma[3] = '0';
-                tempSoma = '1';
-            }
-            if((n1[3] == '1' && n2[3] == '0' || n1[3] == '0' && n2[3] == '1')&& tempSoma == '0')
-            {
-                soma[3] = '1';
-                tempSoma = '0';
-            }
-            if(n1[3] == '1' && n2[3] == '1' && tempSoma == '0')
-            {
-                soma[3] = '0';
-                tempSoma = '1';
-            }
-            if(n1[3] == '1' && n2[3] == '1' && tempSoma == '1')
-            {
-                soma[3] = '1';
-                tempSoma = '1';
+            }else {
+                if(n1[3] == '0' && n2[3] == '0' && tempSoma == '1')
+                {
+                    soma[3] = '1';
+                    tempSoma = '0';
+                }else {
+                    if((n1[3] == '1' && n2[3] == '0' || n1[3] == '0' && n2[3] == '1')&& tempSoma == '1')
+                    {
+                        soma[3] = '0';
+                        tempSoma = '1';
+                    }else {
+                        if((n1[3] == '1' && n2[3] == '0' || n1[3] == '0' && n2[3] == '1')&& tempSoma == '0')
+                        {
+                            soma[3] = '1';
+                            tempSoma = '0';
+                        }else {
+                            if(n1[3] == '1' && n2[3] == '1' && tempSoma == '0')
+                            {
+                                soma[3] = '0';
+                                tempSoma = '1';
+                            }else {
+                                if(n1[3] == '1' && n2[3] == '1' && tempSoma == '1')
+                                {
+                                    soma[3] = '1';
+                                    tempSoma = '1';
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
             /* SEXTO DÍGITO */
             if(n1[2] == '0' && n2[2] == '0' && tempSoma == '0')
             {
                 soma[2] = '0';
-            }
-            if(n1[2] == '0' && n2[2] == '0' && tempSoma == '1')
-            {
-                soma[2] = '1';
-                tempSoma = '0';
-            }
-            if((n1[2] == '1' && n2[2] == '0' || n1[2] == '0' && n2[2] == '1')&& tempSoma == '1')
-            {
-                soma[2] = '0';
-                tempSoma = '1';
-            }
-            if((n1[2] == '1' && n2[2] == '0' || n1[2] == '0' && n2[2] == '1')&& tempSoma == '0')
-            {
-                soma[2] = '1';
-                tempSoma = '0';
-            }
-            if(n1[2] == '1' && n2[2] == '1' && tempSoma == '0')
-            {
-                soma[2] = '0';
-                tempSoma = '1';
-            }
-            if(n1[2] == '1' && n2[2] == '1' && tempSoma == '1')
-            {
-                soma[2] = '1';
-                tempSoma = '1';
+            }else {
+                if(n1[2] == '0' && n2[2] == '0' && tempSoma == '1')
+                {
+                    soma[2] = '1';
+                    tempSoma = '0';
+                }else {
+                    if((n1[2] == '1' && n2[2] == '0' || n1[2] == '0' && n2[2] == '1')&& tempSoma == '1')
+                    {
+                        soma[2] = '0';
+                        tempSoma = '1';
+                    }else {
+                        if((n1[2] == '1' && n2[2] == '0' || n1[2] == '0' && n2[2] == '1')&& tempSoma == '0')
+                        {
+                            soma[2] = '1';
+                            tempSoma = '0';
+                        }else {
+                            if(n1[2] == '1' && n2[2] == '1' && tempSoma == '0')
+                            {
+                                soma[2] = '0';
+                                tempSoma = '1';
+                            }else {
+                                if(n1[2] == '1' && n2[2] == '1' && tempSoma == '1')
+                                {
+                                    soma[2] = '1';
+                                    tempSoma = '1';
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
             /* SÉTIMO DÍGITO */
             if(n1[1] == '0' && n2[1] == '0' && tempSoma == '0')
             {
                 soma[1] = '0';
-            }
-            if(n1[1] == '0' && n2[1] == '0' && tempSoma == '1')
-            {
-                soma[1] = '1';
-                tempSoma = '0';
-            }
-            if((n1[1] == '1' && n2[1] == '0' || n1[1] == '0' && n2[1] == '1')&& tempSoma == '1')
-            {
-                soma[1] = '0';
-                tempSoma = '1';
-            }
-            if((n1[1] == '1' && n2[1] == '0' || n1[1] == '0' && n2[1] == '1')&& tempSoma == '0')
-            {
-                soma[1] = '1';
-                tempSoma = '0';
-            }
-            if(n1[1] == '1' && n2[1] == '1' && tempSoma == '0')
-            {
-                soma[1] = '0';
-                tempSoma = '1';
-            }
-            if(n1[1] == '1' && n2[1] == '1' && tempSoma == '1')
-            {
-                soma[1] = '1';
-                tempSoma = '1';
+            }else {
+                if(n1[1] == '0' && n2[1] == '0' && tempSoma == '1')
+                {
+                    soma[1] = '1';
+                    tempSoma = '0';
+                }else {
+                    if((n1[1] == '1' && n2[1] == '0' || n1[1] == '0' && n2[1] == '1')&& tempSoma == '1')
+                    {
+                        soma[1] = '0';
+                        tempSoma = '1';
+                    } else {
+                        if((n1[1] == '1' && n2[1] == '0' || n1[1] == '0' && n2[1] == '1')&& tempSoma == '0')
+                        {
+                            soma[1] = '1';
+                            tempSoma = '0';
+                        }else {
+                            if(n1[1] == '1' && n2[1] == '1' && tempSoma == '0')
+                            {
+                                soma[1] = '0';
+                                tempSoma = '1';
+                            }else {
+                                if(n1[1] == '1' && n2[1] == '1' && tempSoma == '1')
+                                {
+                                    soma[1] = '1';
+                                    tempSoma = '1';
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
             /* OITAVO DÍGITO */
             if(n1[0] == '0' && n2[0] == '0' && tempSoma == '0')
             {
                 soma[0] = '0';
-            }
-            if(n1[0] == '0' && n2[0] == '0' && tempSoma == '1')
-            {
-                soma[0] = '1';
-                tempSoma = '0';
-            }
-            if((n1[0] == '1' && n2[0] == '0' || n1[0] == '0' && n2[0] == '1')&& tempSoma == '1')
-            {
-                soma[0] = '0';
-                tempSoma = '1';
-            }
-            if((n1[0] == '1' && n2[0] == '0' || n1[0] == '0' && n2[0] == '1')&& tempSoma == '0')
-            {
-                soma[0] = '1';
-                tempSoma = '0';
-            }
-            if(n1[0] == '1' && n2[0] == '1' && tempSoma == '0')
-            {
-                soma[0] = '0';
-                tempSoma = '1';
-            }
-            if(n1[0] == '1' && n2[0] == '1' && tempSoma == '1')
-            {
-                soma[0] = '1';
-                tempSoma = '1';
+            }else {
+                if(n1[0] == '0' && n2[0] == '0' && tempSoma == '1')
+                {
+                    soma[0] = '1';
+                    tempSoma = '0';
+                }else {
+                    if((n1[0] == '1' && n2[0] == '0' || n1[0] == '0' && n2[0] == '1')&& tempSoma == '1')
+                    {
+                        soma[0] = '0';
+                        tempSoma = '1';
+                    }else {
+                        if((n1[0] == '1' && n2[0] == '0' || n1[0] == '0' && n2[0] == '1')&& tempSoma == '0')
+                        {
+                            soma[0] = '1';
+                            tempSoma = '0';
+                        }else {
+                            if(n1[0] == '1' && n2[0] == '1' && tempSoma == '0')
+                            {
+                                soma[0] = '0';
+                                tempSoma = '1';
+                            }else {
+                                if(n1[0] == '1' && n2[0] == '1' && tempSoma == '1')
+                                {
+                                    soma[0] = '1';
+                                    tempSoma = '1';
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 
