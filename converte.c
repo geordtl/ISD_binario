@@ -501,7 +501,7 @@ int main (void){
                 tempSub = '1';
         	}else{
                 if(n1[4] == '0' && n2[4] == '1' && tempSub == '1'){
-                    sub[4] = '1';
+                    sub[4] = '0';
                     tempSub = '1';
                     tempSub2 = '1';
         	    }else {
