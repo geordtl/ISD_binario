@@ -4,7 +4,7 @@
 
 int main (void){
     int contaDigitos1, contaDigitos2;
-    char n1[9], n2[9], soma[9], tempSoma, operacao;
+    char n1[9], n2[9], soma[9], sub[9], tempSoma, tempSub, operacao;
     /* acrescimos de 0 para n1 */
     char z0[9] = {'\0'};
     char z1[9] = {'0','\0'};
@@ -383,16 +383,313 @@ int main (void){
                     }
                 }
             }
+            printf("%sb\n%c\n%sb\n=\n%s\n", n1, operacao, n2, soma);
         }
         
+        
         if(operacao == '-'){
-        	if((n1[7] == '1' && n2[7] == '1') || n1[7] == '1' && n2[7] == '0'){
-        	}
-        }
+        	if(n1[7] == '0' && n2[7] == '1'){
+                sub[7] = '1';
+                tempSub = '1';
+        	}else{
+                if(n1[7] == '0' && n2[7] == '0'){
+                    sub[7] = '0';
+                    tempSub = '0';
+        	    }else{
+                    if(n1[7] == '1' && n2[7] == '0'){
+                        sub[7] = '1';
+                        tempSub = '0';
+        	        }else{
+                        if(n1[7] == '1' && n2[7] == '1'){
+                            sub[7] = '0';
+                            tempSub = '0';
+        	            }
+                    }
+                }
+            }
 
-        printf("%sb\n%c\n%sb\n=\n%s\n", n1, operacao, n2, soma);
-        printf("QTD de caracteres n1: %d\n", contaDigitos1);
-        printf("QTD de caracteres n2: %d\n", contaDigitos2);
+            if(n1[6] == '0' && n2[6] == '1' && tempSub == '0'){
+                sub[6] = '1';
+                tempSub = '1';
+        	}else{
+                if(n1[6] == '0' && n2[6] == '1' && tempSub == '1'){
+                    sub[6] = '0';
+                    tempSub = '0';
+        	    }else {
+                    if(n1[6] == '0' && n2[6] == '0' && tempSub == '0'){
+                        sub[6] = '0';
+                        tempSub = '0';
+        	        }else{
+                        if(n1[6] == '0' && n2[6] == '0' && tempSub == '1'){
+                            sub[6] = '1';
+                            tempSub = '0';
+        	            }else{
+                            if(n1[6] == '1' && n2[6] == '0' && tempSub == '0'){
+                                sub[6] = '1';
+                                tempSub = '0';
+        	                }else{
+                                if(n1[6] == '1' && n2[6] == '0' && tempSub == '1'){
+                                    sub[6] = '0';
+                                    tempSub = '0';
+        	                    }else{
+                                    if(n1[6] == '1' && n2[6] == '1' && tempSub == '0'){
+                                        sub[6] = '0';
+                                        tempSub = '0';
+        	                        }else{
+                                        if(n1[6] == '1' && n2[6] == '1' && tempSub == '1'){
+                                            sub[6] = '1';
+                                            tempSub = '1';
+        	                            }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if(n1[5] == '0' && n2[5] == '1' && tempSub == '0'){
+                sub[5] = '1';
+                tempSub = '1';
+        	}else{
+                if(n1[5] == '0' && n2[5] == '1' && tempSub == '1'){
+                    sub[5] = '0';
+                    tempSub = '0';
+        	    }else {
+                    if(n1[5] == '0' && n2[5] == '0' && tempSub == '0'){
+                        sub[5] = '0';
+                        tempSub = '0';
+        	        }else{
+                        if(n1[5] == '0' && n2[5] == '0' && tempSub == '1'){
+                            sub[5] = '1';
+                            tempSub = '0';
+        	            }else{
+                            if(n1[5] == '1' && n2[5] == '0' && tempSub == '0'){
+                                sub[5] = '1';
+                                tempSub = '0';
+        	                }else{
+                                if(n1[5] == '1' && n2[5] == '0' && tempSub == '1'){
+                                    sub[5] = '0';
+                                    tempSub = '0';
+        	                    }else{
+                                    if(n1[5] == '1' && n2[5] == '1' && tempSub == '0'){
+                                        sub[5] = '0';
+                                        tempSub = '0';
+        	                        }else{
+                                        if(n1[5] == '1' && n2[5] == '1' && tempSub == '1'){
+                                            sub[5] = '1';
+                                            tempSub = '1';
+        	                            }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if(n1[4] == '0' && n2[4] == '1' && tempSub == '0'){
+                sub[4] = '1';
+                tempSub = '1';
+        	}else{
+                if(n1[4] == '0' && n2[4] == '1' && tempSub == '1'){
+                    sub[4] = '0';
+                    tempSub = '0';
+        	    }else {
+                    if(n1[4] == '0' && n2[4] == '0' && tempSub == '0'){
+                        sub[4] = '0';
+                        tempSub = '0';
+        	        }else{
+                        if(n1[4] == '0' && n2[4] == '0' && tempSub == '1'){
+                            sub[4] = '1';
+                            tempSub = '0';
+        	            }else{
+                            if(n1[4] == '1' && n2[4] == '0' && tempSub == '0'){
+                                sub[4] = '1';
+                                tempSub = '0';
+        	                }else{
+                                if(n1[4] == '1' && n2[4] == '0' && tempSub == '1'){
+                                    sub[4] = '0';
+                                    tempSub = '0';
+        	                    }else{
+                                    if(n1[4] == '1' && n2[4] == '1' && tempSub == '0'){
+                                        sub[4] = '0';
+                                        tempSub = '0';
+        	                        }else{
+                                        if(n1[4] == '1' && n2[4] == '1' && tempSub == '1'){
+                                            sub[4] = '1';
+                                            tempSub = '1';
+        	                            }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if(n1[3] == '0' && n2[3] == '1' && tempSub == '0'){
+                sub[3] = '1';
+                tempSub = '1';
+        	}else{
+                if(n1[3] == '0' && n2[3] == '1' && tempSub == '1'){
+                    sub[3] = '0';
+                    tempSub = '0';
+        	    }else {
+                    if(n1[3] == '0' && n2[3] == '0' && tempSub == '0'){
+                        sub[3] = '0';
+                        tempSub = '0';
+        	        }else{
+                        if(n1[3] == '0' && n2[3] == '0' && tempSub == '1'){
+                            sub[3] = '1';
+                            tempSub = '0';
+        	            }else{
+                            if(n1[3] == '1' && n2[3] == '0' && tempSub == '0'){
+                                sub[3] = '1';
+                                tempSub = '0';
+        	                }else{
+                                if(n1[3] == '1' && n2[3] == '0' && tempSub == '1'){
+                                    sub[3] = '0';
+                                    tempSub = '0';
+        	                    }else{
+                                    if(n1[3] == '1' && n2[3] == '1' && tempSub == '0'){
+                                        sub[3] = '0';
+                                        tempSub = '0';
+        	                        }else{
+                                        if(n1[3] == '1' && n2[3] == '1' && tempSub == '1'){
+                                            sub[3] = '1';
+                                            tempSub = '1';
+        	                            }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if(n1[2] == '0' && n2[2] == '1' && tempSub == '0'){
+                sub[2] = '1';
+                tempSub = '1';
+        	}else{
+                if(n1[2] == '0' && n2[2] == '1' && tempSub == '1'){
+                    sub[2] = '0';
+                    tempSub = '0';
+        	    }else {
+                    if(n1[2] == '0' && n2[2] == '0' && tempSub == '0'){
+                        sub[2] = '0';
+                        tempSub = '0';
+        	        }else{
+                        if(n1[2] == '0' && n2[2] == '0' && tempSub == '1'){
+                            sub[2] = '1';
+                            tempSub = '0';
+        	            }else{
+                            if(n1[2] == '1' && n2[2] == '0' && tempSub == '0'){
+                                sub[2] = '1';
+                                tempSub = '0';
+        	                }else{
+                                if(n1[2] == '1' && n2[2] == '0' && tempSub == '1'){
+                                    sub[2] = '0';
+                                    tempSub = '0';
+        	                    }else{
+                                    if(n1[2] == '1' && n2[2] == '1' && tempSub == '0'){
+                                        sub[2] = '0';
+                                        tempSub = '0';
+        	                        }else{
+                                        if(n1[2] == '1' && n2[2] == '1' && tempSub == '1'){
+                                            sub[2] = '1';
+                                            tempSub = '1';
+        	                            }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if(n1[1] == '0' && n2[1] == '1' && tempSub == '0'){
+                sub[1] = '1';
+                tempSub = '1';
+        	}else{
+                if(n1[1] == '0' && n2[1] == '1' && tempSub == '1'){
+                    sub[1] = '0';
+                    tempSub = '0';
+        	    }else {
+                    if(n1[1] == '0' && n2[1] == '0' && tempSub == '0'){
+                        sub[1] = '0';
+                        tempSub = '0';
+        	        }else{
+                        if(n1[1] == '0' && n2[1] == '0' && tempSub == '1'){
+                            sub[1] = '1';
+                            tempSub = '0';
+        	            }else{
+                            if(n1[1] == '1' && n2[1] == '0' && tempSub == '0'){
+                                sub[1] = '1';
+                                tempSub = '0';
+        	                }else{
+                                if(n1[1] == '1' && n2[1] == '0' && tempSub == '1'){
+                                    sub[1] = '0';
+                                    tempSub = '0';
+        	                    }else{
+                                    if(n1[1] == '1' && n2[1] == '1' && tempSub == '0'){
+                                        sub[1] = '0';
+                                        tempSub = '0';
+        	                        }else{
+                                        if(n1[1] == '1' && n2[1] == '1' && tempSub == '1'){
+                                            sub[1] = '1';
+                                            tempSub = '1';
+        	                            }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if(n1[0] == '0' && n2[0] == '1' && tempSub == '0'){
+                sub[0] = '1';
+                tempSub = '1';
+        	}else{
+                if(n1[0] == '0' && n2[0] == '1' && tempSub == '1'){
+                    sub[0] = '0';
+                    tempSub = '0';
+        	    }else {
+                    if(n1[0] == '0' && n2[0] == '0' && tempSub == '0'){
+                        sub[0] = '0';
+                        tempSub = '0';
+        	        }else{
+                        if(n1[0] == '0' && n2[0] == '0' && tempSub == '1'){
+                            sub[0] = '1';
+                            tempSub = '0';
+        	            }else{
+                            if(n1[0] == '1' && n2[0] == '0' && tempSub == '0'){
+                                sub[0] = '1';
+                                tempSub = '0';
+        	                }else{
+                                if(n1[0] == '1' && n2[0] == '0' && tempSub == '1'){
+                                    sub[0] = '0';
+                                    tempSub = '0';
+        	                    }else{
+                                    if(n1[0] == '1' && n2[0] == '1' && tempSub == '0'){
+                                        sub[0] = '0';
+                                        tempSub = '0';
+        	                        }else{
+                                        if(n1[0] == '1' && n2[0] == '1' && tempSub == '1'){
+                                            sub[0] = '1';
+                                            tempSub = '1';
+                                            /* overflow desconsiderado */
+        	                            }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            printf("%sb\n%c\n%sb\n=\n%s\n", n1, operacao, n2, sub);
+        }
     }
     return 0;
 }
