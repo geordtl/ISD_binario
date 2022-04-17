@@ -543,7 +543,7 @@ int main (void){
                 tempSub = '1';
         	}else{
                 if(n1[3] == '0' && n2[3] == '1' && tempSub == '1'){
-                    sub[3] = '1';
+                    sub[3] = '0';
                     tempSub = '1';
                     tempSub2 = '1';
         	    }else {
