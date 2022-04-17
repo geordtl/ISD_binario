@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 int main (void){
-    int n1c, n2c, n1q, n2q, contaDigitos1 = 0, contaDigitos2 = 0;
+    int contaDigitos1, contaDigitos2;
     char n1[9], n2[9], soma[9], tempSoma, operacao;
     /* acrescimos de 0 para n1 */
     char z0[9] = {'\0'};
@@ -25,29 +25,15 @@ int main (void){
     char zr7[9] = {'0','0','0','0','0','0','0','\0'};
 
     scanf("%8s", n1);
-    n1c = strtol(n1, NULL, 10);
-    n1q = n1c;
     
     if (strcmp(n1, "S") == 0) {
         printf("O programa foi encerrado!\n");
     } else {
         scanf(" %c", &operacao);
         scanf("%8s", n2);
-
-        n2c = strtol(n2, NULL, 10);
-        n2q = n2c;
         
         /* conta os dígitos de n1 e implementa a estrutura de decisão */
-        if (n1q == 0 || n1q == 1) {
-            contaDigitos1 = 1;
-        }
-        else{
-            while (n1q != 0)
-           {
-              contaDigitos1 = contaDigitos1 + 1;
-              n1q = n1q / 10;
-            }
-        }
+        contaDigitos1 = strlen(n1);
 
         switch(contaDigitos1){
             case 1:
@@ -85,16 +71,7 @@ int main (void){
         }
 
         /* conta os dígitos de n2 e implementa a estrutura de decisão */
-        if (n2q == 0 || n2q == 1) {
-            contaDigitos2 = 1;
-        }
-        else{
-            while (n2q != 0)
-           {
-              contaDigitos2 = contaDigitos2 + 1;
-              n2q = n2q / 10;
-            }
-        }
+        contaDigitos2 = strlen(n2);
 
         switch(contaDigitos2){
             case 1:
@@ -407,8 +384,15 @@ int main (void){
                 }
             }
         }
+        
+        if(operacao == '-'){
+        	if((n1[7] == '1' && n2[7] == '1') || n1[7] == '1' && n2[7] == '0'){
+        	}
+        }
 
         printf("%sb\n%c\n%sb\n=\n%s\n", n1, operacao, n2, soma);
+        printf("QTD de caracteres n1: %d\n", contaDigitos1);
+        printf("QTD de caracteres n2: %d\n", contaDigitos2);
     }
     return 0;
 }
