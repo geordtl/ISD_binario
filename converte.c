@@ -5,7 +5,7 @@
 int main (void){
     /* variáveis */
     /* índices */
-    int j, k, s, i, m, n, p, q, r, z, y, u,
+    int j, k, s, i, m, n, p, q, r, z, y, u, l, d,
     
     /* auxiliares */
     n1c, n2c, n1q, n2q, contaDigitos, contaDigitos2,
@@ -14,8 +14,8 @@ int main (void){
     numero1[9], numero2[9],
     
     /* operações */
-    soma, sub, sub2, totSoma[9], totSub[9], comp2, totComp2[9];
-    char n1[9], n2[9], operacao, tempSoma = 0, somaChar[9], subChar[9], comp2C[9], tempSub = 0, tempSub2 = 0, tempSub3 = 0;
+    mod, soma, sub, sub2, potDec = 1, totSoma[9], totSub[9], comp2, totComp2[9], n1Dec, soma1Dec = 0;
+    char n1[9], n1Sub[9], n2[9], operacao, tempSoma = 0, somaChar[9], subChar[9], comp2C[9], tempSub = 0, tempSub2 = 0, tempSub3 = 0;
 
     scanf("%8s", n1);
     n1q = strtol(n1, NULL, 10);
@@ -87,9 +87,7 @@ int main (void){
 		    			tempSoma = 1;
 		    		break;
 		    	}
-		    	
 		    	totSoma[p] = soma;
-		 
 		    }
 		    
 		    for(q = 7; q >= 0; q--){
@@ -97,30 +95,42 @@ int main (void){
 		    	n2[q] = numero2[q] + '0';
 		    	somaChar[q] = totSoma[q] + '0'; 
 		    }
-		
-		    printf("%sb\n%c\n%sb\n=\n%s\n", n1, operacao, n2, somaChar);
-	    
+		    
+		    for(l = 0; l <= contaDigitos; l++){
+		    	mod = n1c%10;	
+		    	n1c = n1c/10;
+		    	
+		    	soma1Dec = soma1Dec + mod * potDec;
+		    	potDec = potDec * 2;
+		    }
+		   
+		    
+		    printf("%sb (%di)\n%c\n%sb\n=\n%sb\n", n1, soma1Dec, operacao, n2, somaChar);
 	    }
         if(operacao == '-'){
-        	if(numero1[0] == 0 && numero2[0] == 0){
-        		/* implementa o complemento a 1 */
+        	/* implementa o complemento a 1 */
 
-        		for(r = 0; r <= 7; r++){
-                        if(numero2[r] == 1){	
-                            numero2[r] = 0;
-                        }
-                        else{
-                         numero2[r] = 1;
-                        }
-        		}
-     
-        		
-        		/* implementa o complemento a 2 */
-        		
+        	for(r = 0; r <= 7; r++){
+                   if(numero2[r] == 1){	
+                       numero2[r] = 0;
+                    }
+                    else{
+                     	numero2[r] = 1;
+                    }
+        	}
+        	
+        	/* if(numero1[0] == 0 && numero2[0] == 0){ */
+
+        		/* implementa o complemento a 2 */       	
         		for(z = 7; z >= 0; z--){
         		
         		if(z == 7){
-		    		comp2 =  numero2[z] + 1 + tempSub;
+        			if(numero2[7] == 1){
+        			comp2 =  0;
+        			tempSub = 1;
+        			}else{
+		    		comp2 =  numero2[z] + 1 + tempSub;	
+        			}
         		}
 		        else {
 		            comp2 =  numero2[z] + tempSub;
@@ -140,57 +150,59 @@ int main (void){
 		    			tempSub = 1;
 		    		break;
 		    	}
-		    	
 		    	totComp2[z] = comp2;
 	    		}
 	    		
 	    		/* soma os binários */
-	    		
 	    		for(u = 7; u >= 0; u--){
 		    	
 		    	sub2 =  numero1[u] + totComp2[u] + tempSub;
 		    	
 		    	switch(sub2){
 		    		case 0:
-		    			sub2 = 0;
-		    			tempSub2 = 0;
-		    			tempSub3 = 0;
+			    		sub2 = 0;
+			    		tempSub2 = 0;
+			    		tempSub3 = 0;
 		    		break;
 		    		case 1:
-		    			if(tempSub3 == 1 || tempSub2 == 1){
-			    			sub2 = 0;
-			    			tempSub2 = 1;
-			    			tempSub3 = 1;
-		    			}else {
+		    			if(tempSub2 == 1){
+		    				sub2 = 0;
+		    				tempSub2 = 1;
+		    				tempSub3 = 0;
+		    			}
+		    			else{
 		    				sub2 = 1;
 		    				tempSub2 = 0;
-			    			tempSub3 = 0;
+		    				tempSub3 = 0;
 		    			}
 		    		break;
 		    		case 2:
-		    			sub2 = 0;
-		    			tempSub2 = 1;
+		    		if(tempSub2 == 1){
+		    				sub2 = 1;
+		    				tempSub2 = 1;
+		    				tempSub3 = 0;
+		    			}else{
+			    			sub2 = 0;
+			    			tempSub2 = 1;
+			    			tempSub3 = 0;
+		    			}
 		    		break;
 		    		case 3: 
-		    			sub2 = 0;
+		    			sub2 = 1;
 		    			tempSub2 = 1;
 		    			tempSub3 = 1;
 		    		break;
 		    	}
-		    	
 		    	totSub[u] = sub2;
-		 
 		    	}
 	    		
-	    		
 	    		for(y = 7; y >= 0; y--){
-			    	n1[y] = numero1[y] + '0';
+			    	n1Sub[y] = numero1[y] + '0';
 			    	comp2C[y] = totComp2[y] + '0'; 
 			    	subChar[y] = totSub[y] + '0';
 	    		}
-	    		
-	    		printf("%sb\n%c\n%sb\n=\n%s\n", n1, operacao, comp2C, subChar);
-		    }
+	    		printf("%sb\n%c\n%sb\n=\n%sb\n", n1Sub, operacao, comp2C, subChar);
+		    
         }
 	    
         }      
