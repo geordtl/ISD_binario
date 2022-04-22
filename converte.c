@@ -3,8 +3,19 @@
 #include <stdlib.h>
 
 int main (void){
-    int j, k, s, i, m, n, numero1[9], numero2[9], n1c, n2c, n1q, n2q, contaDigitos, aux = 0, aux2 = 0;
-    char n1[9], n2[9], soma[9], sub[9], tempSoma = 0, tempSub, tempSub2, operacao;
+    /* variáveis */
+    /* índices */
+    int j, k, s, i, m, n, p, q, r, z, y, u,
+    
+    /* auxiliares */
+    n1c, n2c, n1q, n2q, contaDigitos, contaDigitos2,
+    
+    /* arrays */
+    numero1[9], numero2[9],
+    
+    /* operações */
+    soma, sub, sub2, totSoma[9], totSub[9], comp2, totComp2[9];
+    char n1[9], n2[9], operacao, tempSoma = 0, somaChar[9], subChar[9], comp2C[9], tempSub = 0, tempSub2 = 0, tempSub3 = 0;
 
     scanf("%8s", n1);
     n1q = strtol(n1, NULL, 10);
@@ -14,7 +25,6 @@ int main (void){
     for(k = 0; k < (8-contaDigitos); k++){
     	numero1[k] = 0;	
     }
-    
     
     for(s = (8-contaDigitos); s < 8; s++){
     	numero1[s] = (int)n1[s-(8-contaDigitos)];
@@ -27,7 +37,6 @@ int main (void){
     	}
     }
     
-    
     if (strcmp(n1, "S") == 0) {
         printf("O programa foi encerrado!\n");
     } else {
@@ -36,8 +45,8 @@ int main (void){
         n2c = strtol(n2, NULL, 10);
         n2q = n2c;
         
-        if(operacao == '+'){
         contaDigitos2 = strlen(n2);
+        if(operacao == '+' || operacao == '-'){
         
 	    for(m = 0; m < (8-contaDigitos2); m++){
 	    	numero2[m] = 0;	
@@ -53,17 +62,139 @@ int main (void){
 	    		numero2[n] = 1;
 	    	}
 	    }
-        	
-        	    printf("%d\n", numero2[0]);
-		    printf("%d\n", numero2[1]);
-		    printf("%d\n", numero2[2]);
-		    printf("%d\n", numero2[3]);
-		    printf("%d\n", numero2[4]);
-		    printf("%d\n", numero2[5]);
-		    printf("%d\n", numero2[6]);
-		    printf("%d\n", numero2[7]);
-           /*printf("%db\n%c\n%db\n=\n", numero1, operacao, numero2);*/
+	    
+	    if(operacao == '+'){
+		    /* função de soma */
+		    for(p = 7; p >= 0; p--){
+		    	
+		    	soma =  numero1[p] + numero2[p] + tempSoma;
+		    	
+		    	switch(soma){
+		    		case 0:
+		    			soma = 0;
+		    			tempSoma = 0;
+		    		break;
+		    		case 1:
+		    			soma = 1;
+		    			tempSoma = 0;
+		    		break;
+		    		case 2:
+		    			soma = 0;
+		    			tempSoma = 1;
+		    		break;
+		    		case 3: 
+		    			soma = 1;
+		    			tempSoma = 1;
+		    		break;
+		    	}
+		    	
+		    	totSoma[p] = soma;
+		 
+		    }
+		    
+		    for(q = 7; q >= 0; q--){
+		    	n1[q] = numero1[q] + '0';
+		    	n2[q] = numero2[q] + '0';
+		    	somaChar[q] = totSoma[q] + '0'; 
+		    }
+		
+		    printf("%sb\n%c\n%sb\n=\n%s\n", n1, operacao, n2, somaChar);
+	    
+	    }
+        if(operacao == '-'){
+        	if(numero1[0] == 0 && numero2[0] == 0){
+        		/* implementa o complemento a 1 */
+
+        		for(r = 0; r <= 7; r++){
+                        if(numero2[r] == 1){	
+                            numero2[r] = 0;
+                        }
+                        else{
+                         numero2[r] = 1;
+                        }
+        		}
+     
+        		
+        		/* implementa o complemento a 2 */
+        		
+        		for(z = 7; z >= 0; z--){
+        		
+        		if(z == 7){
+		    		comp2 =  numero2[z] + 1 + tempSub;
+        		}
+		        else {
+		            comp2 =  numero2[z] + tempSub;
+		        }
+		    	
+		    	switch(comp2){
+		    		case 1:
+		    			sub = 1;
+		    			tempSub = 0;
+		    		break;
+		    		case 2:
+		    			sub = 0;
+		    			tempSub = 1;
+		    		break;
+		    		case 3: 
+		    			sub = 1;
+		    			tempSub = 1;
+		    		break;
+		    	}
+		    	
+		    	totComp2[z] = comp2;
+	    		}
+	    		
+	    		/* soma os binários */
+	    		
+	    		for(u = 7; u >= 0; u--){
+		    	
+		    	sub2 =  numero1[u] + totComp2[u] + tempSub;
+		    	
+		    	switch(sub2){
+		    		case 0:
+		    			sub2 = 0;
+		    			tempSub2 = 0;
+		    			tempSub3 = 0;
+		    		break;
+		    		case 1:
+		    			if(tempSub3 == 1 || tempSub2 == 1){
+			    			sub2 = 0;
+			    			tempSub2 = 1;
+			    			tempSub3 = 1;
+		    			}else {
+		    				sub2 = 1;
+		    				tempSub2 = 0;
+			    			tempSub3 = 0;
+		    			}
+		    		break;
+		    		case 2:
+		    			sub2 = 0;
+		    			tempSub2 = 1;
+		    		break;
+		    		case 3: 
+		    			sub2 = 0;
+		    			tempSub2 = 1;
+		    			tempSub3 = 1;
+		    		break;
+		    	}
+		    	
+		    	totSub[u] = sub2;
+		 
+		    	}
+	    		
+	    		
+	    		for(y = 7; y >= 0; y--){
+			    	n1[y] = numero1[y] + '0';
+			    	comp2C[y] = totComp2[y] + '0'; 
+			    	subChar[y] = totSub[y] + '0';
+	    		}
+	    		
+	    		printf("%sb\n%c\n%sb\n=\n%s\n", n1, operacao, comp2C, subChar);
+		    }
         }
+	    
+        }      
+        
     }
       
     return 0;
