@@ -78,7 +78,6 @@ int main(void)
 
 		if (operacao == '+')
 		{
-			/* função de soma */
 			for (p = 7; p >= 0; p--)
 			{
 				soma = numero1[p] + numero2[p] + tempSoma;
@@ -112,6 +111,10 @@ int main(void)
 				somaChar[q] = totSoma[q] + '0';
 			}
 
+			int converteN1 = strtol(n1, NULL, 10);
+			int converteN2 = strtol(n2, NULL, 10);
+			int converteSoma = strtol(somaChar, NULL, 10);
+
 			for (l = 0; l <= contaDigitos; l++)
 			{
 				mod = n1c % 10;
@@ -121,7 +124,7 @@ int main(void)
 				potDec = potDec * 2;
 			}
 
-			printf("%sb (%di)\n%c\n%sb\n=\n%sb\n", n1, soma1Dec, operacao, n2, somaChar);
+			printf("%db (%di)\n%c\n%db\n=\n%db\n", converteN1, soma1Dec, operacao, converteN2, converteSoma);
 		}
 		if (operacao == '-')
 		{
@@ -182,7 +185,7 @@ int main(void)
 			for (u = 7; u >= 0; u--)
 			{
 
-				sub2 = numero1[u] + totComp2[u] + tempSub;
+				sub2 = numero1[u] + totComp2[u] + tempSub2;
 
 				switch (sub2)
 				{
@@ -213,7 +216,11 @@ int main(void)
 				subChar[y] = totSub[y] + '0';
 			}
 
-			printf("%sb\n%c\n%sb\n=\n%sb\n", n1Sub, operacao, comp2C, subChar);
+			int converteN1 = strtol(n1Sub, NULL, 10);
+			int converteN2 = strtol(comp2C, NULL, 10);
+			int converteSub = strtol(subChar, NULL, 10);
+
+			printf("%db\n%c\n%db\n=\n%db\n", converteN1, operacao, converteN2, converteSub);
 		}
 	}
 	return 0;
