@@ -5,6 +5,18 @@
 int calculaQtdDigitos(int binario){
 }
 
+int converteBinarioParaDecimal(int binario){
+    int qtdDigitos = sizeof(binario), i, mod, decimal = 0, potDec = 1;
+    
+    for(i = 0; i < qtdDigitos; i++){
+        mod = binario % 10;
+    	binario = binario / 10;
+    	decimal = decimal + mod * potDec;
+    	potDec = potDec * 2;
+    }
+    return decimal;
+}
+
 int main(void)
 {
 	int i,
@@ -110,6 +122,7 @@ int main(void)
     			int converteN1 = strtol(n1, NULL, 10);
     			int converteN2 = strtol(n2, NULL, 10);
     			int converteSoma = strtol(somaChar, NULL, 10);
+    			int totalDecimal = converteBinarioParaDecimal(converteSoma);
     
                 int modHex1, modHex2;
     			for (i = 0; i <= qtdDigitos; i++)
@@ -133,7 +146,7 @@ int main(void)
     				
     			}
     
-    			printf("%db (%di %dh)\n%c\n%db (%di %dh)\n=\n%db\n", converteN1, soma1Dec, num1Hexa, operacao, converteN2, soma2Dec, num2Hexa, converteSoma);
+    			printf("%db (%di %dh)\n%c\n%db (%di %dh)\n=\n%db (%di)\n", converteN1, soma1Dec, num1Hexa, operacao, converteN2, soma2Dec, num2Hexa, converteSoma, totalDecimal);
     		}
     // 		if (operacao == '-')
     // 		{
